@@ -1,30 +1,36 @@
 :root {
   /* ==========================================================================
-     Strict URMIRA Brand Color Palette
+     URMIRA Official Brand Color Palette (Extracted from Official Logo)
      ========================================================================== */
-  --primary-deep-green: #123B27;
-  --soft-leaf-green: #3E7A4A;
-  --warm-cream: #FBF8F0;
+  --primary-deep-green: #0D3823;
+  --primary-dark-green: #082818;
+  --soft-leaf-green: #2F6F48;
+  --soft-leaf-light: #3D8558;
+  
+  --warm-cream: #FAF7EE;
   --warm-cream-card: #FFFFFF;
-  --warm-cream-hover: #F6F1E3;
-  --muted-gold: #C6A15B;
-  --muted-gold-dark: #A8833E;
-  --muted-gold-light: #EBD8B2;
-  --dark-text: #173021;
-  --text-muted: #4B6354;
-  --text-light: #7A9183;
+  --warm-cream-hover: #F4EEDF;
+  
+  --muted-gold: #C89D42;
+  --muted-gold-dark: #A67924;
+  --muted-gold-light: #E8D3A2;
+  --muted-gold-gradient: linear-gradient(135deg, #D5B058 0%, #C89D42 50%, #A67924 100%);
+  
+  --dark-text: #0C2417;
+  --text-muted: #425B4C;
+  --text-light: #6E8878;
   --white: #FFFFFF;
   
   /* Borders & Surfaces */
-  --border-light: #E8E1D2;
-  --border-subtle: #F2ECE0;
-  --border-gold: rgba(198, 161, 91, 0.4);
-  --border-green: rgba(18, 59, 39, 0.12);
+  --border-light: #EAE3D2;
+  --border-subtle: #F3ECE0;
+  --border-gold: rgba(200, 157, 66, 0.45);
+  --border-green: rgba(13, 56, 35, 0.12);
 
   /* Status & Badges */
-  --badge-bestseller: #123B27;
-  --badge-new: #3E7A4A;
-  --badge-discount: #A8833E;
+  --badge-bestseller: #0D3823;
+  --badge-new: #2F6F48;
+  --badge-discount: #A67924;
 
   /* Typography */
   --font-serif: 'Noto Serif Bengali', Georgia, serif;
@@ -44,10 +50,10 @@
   --radius-full: 9999px;
 
   /* Elevation Shadows */
-  --shadow-subtle: 0 4px 16px rgba(18, 59, 39, 0.05);
-  --shadow-card: 0 6px 24px rgba(18, 59, 39, 0.08);
-  --shadow-card-hover: 0 16px 36px rgba(18, 59, 39, 0.14);
-  --shadow-modal: 0 24px 60px rgba(18, 59, 39, 0.25);
+  --shadow-subtle: 0 4px 16px rgba(13, 56, 35, 0.05);
+  --shadow-card: 0 6px 24px rgba(13, 56, 35, 0.08);
+  --shadow-card-hover: 0 16px 36px rgba(13, 56, 35, 0.14);
+  --shadow-modal: 0 24px 60px rgba(13, 56, 35, 0.25);
 
   /* Transitions */
   --transition-fast: 0.18s ease;
