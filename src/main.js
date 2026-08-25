@@ -718,10 +718,12 @@ function setupEventListeners() {
 }
 
 // ==========================================================================
-// 8. Dedicated Product Details Page Engine
+// 8. Dedicated Product Details Page Engine (Luxury E-commerce)
 // ==========================================================================
 let currentProductPageQty = 1;
 let currentProductDetailsItem = null;
+let selectedProductPagePrice = 0;
+let selectedProductPageSizeLabel = '';
 
 function renderProductDetailsPage() {
   const container = document.getElementById('product-details-container');
@@ -732,6 +734,8 @@ function renderProductDetailsPage() {
   const product = products.find(p => p.id === productId) || products[0];
   currentProductDetailsItem = product;
   currentProductPageQty = 1;
+  selectedProductPagePrice = product.price;
+  selectedProductPageSizeLabel = product.unit;
 
   // Update Page Title and Breadcrumbs
   document.title = `${product.name} - URMIRA | প্রিমিয়াম খাঁটি খাবার`;
@@ -740,60 +744,86 @@ function renderProductDetailsPage() {
   const breadcrumbTitle = document.getElementById('product-breadcrumb-title');
   const tabReviewsCount = document.getElementById('tab-reviews-count');
   
-  if (breadcrumbCat) breadcrumbCat.textContent = catObj ? catObj.name : 'পণ্য';
+  if (breadcrumbCat) breadcrumbCat.textContent = catObj ? catObj.name : 'প্রাকৃতিক খাদ্য';
   if (breadcrumbTitle) breadcrumbTitle.textContent = product.name;
-  if (tabReviewsCount) tabReviewsCount.textContent = toBanglaNumber((product.reviews || []).length || product.reviewsCount);
+  if (tabReviewsCount) tabReviewsCount.textContent = toBanglaNumber((product.reviews || []).length);
 
   const isWishlisted = wishlist.includes(product.id);
-  const waText = encodeURIComponent(`হ্যালো URMIRA, আমি "${product.name}" (${product.unit}, মূল্য: ৳${product.price}) অর্ডার করতে চাই।`);
+  const waText = encodeURIComponent(`হ্যালো URMIRA, আমি "${product.name}" (${selectedProductPageSizeLabel}, মূল্য: ৳${product.price}) অর্ডার করতে চাই।`);
   const waUrl = `https://wa.me/${siteConfig.whatsappNumber}?text=${waText}`;
 
+  // Pack sizes options if available
+  const sizeOptions = [
+    { label: product.unit, price: product.price, origPrice: product.originalPrice, active: true },
+    { label: "২x ডাবল প্যাক", price: Math.round(product.price * 1.9), origPrice: Math.round(product.price * 2.2), active: false }
+  ];
+
   container.innerHTML = `
-    <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px; align-items: start;">
+    <div class="product-detail-hero-grid">
       <!-- Product Image Gallery Left -->
-      <div style="position: sticky; top: 100px;">
-        <div style="background: #FAF7EF; border: 1.5px solid var(--border-light); border-radius: 20px; padding: 30px; text-align: center; position: relative; box-shadow: 0 10px 30px rgba(18, 59, 39, 0.06);">
-          ${product.badge ? `<span class="badge badge-bestseller" style="position: absolute; top: 18px; left: 18px; font-size: 13px; padding: 6px 14px;">${product.badge}</span>` : ''}
+      <div style="position: sticky; top: 96px;">
+        <div class="product-gallery-card">
+          ${product.badge ? `<span class="badge badge-bestseller" style="position: absolute; top: 18px; left: 18px; font-size: 13.5px; padding: 6px 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">${product.badge}</span>` : ''}
           
           <button class="product-wishlist-btn ${isWishlisted ? 'active-wishlist' : ''}" 
-                  style="position: absolute; top: 18px; right: 18px; width: 44px; height: 44px; border-radius: 50%; font-size: 18px;"
+                  style="position: absolute; top: 18px; right: 18px; width: 44px; height: 44px; border-radius: 50%; font-size: 18px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);"
                   title="পছন্দের তালিকায় রাখুন"
                   onclick="window.toggleWishlist(${product.id})">
             <i class="fa-${isWishlisted ? 'solid' : 'regular'} fa-heart"></i>
           </button>
 
-          <img src="${product.image}" alt="${product.name}" style="width: 100%; max-height: 380px; object-fit: contain; border-radius: 12px; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'" />
+          <img id="main-product-img" src="${product.image}" alt="${product.name}" />
         </div>
 
         <!-- Purity and Trust Highlights -->
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px;">
-          <div style="background: #ffffff; border: 1px solid var(--border-light); border-radius: 12px; padding: 12px 14px; display: flex; align-items: center; gap: 10px;">
-            <i class="fa-solid fa-shield-halved" style="color: var(--primary-deep-green); font-size: 20px;"></i>
-            <span style="font-size: 12.5px; font-weight: 700; color: var(--dark-text);">১০০% খাঁটি ও ঘরোয়া</span>
+        <div class="product-trust-perks-grid">
+          <div class="trust-perk-card">
+            <div class="trust-perk-icon"><i class="fa-solid fa-leaf"></i></div>
+            <div>
+              <h4 style="font-size: 13px; font-weight: 700; color: var(--dark-text);">১০০% প্রাকৃতিক</h4>
+              <p style="font-size: 11.5px; color: var(--text-muted); margin-top: 1px;">ভেজাল ও কেমিক্যালমুক্ত</p>
+            </div>
           </div>
-          <div style="background: #ffffff; border: 1px solid var(--border-light); border-radius: 12px; padding: 12px 14px; display: flex; align-items: center; gap: 10px;">
-            <i class="fa-solid fa-truck-fast" style="color: var(--primary-deep-green); font-size: 20px;"></i>
-            <span style="font-size: 12.5px; font-weight: 700; color: var(--dark-text);">ক্যাশ অন ডেলিভারি</span>
+          <div class="trust-perk-card">
+            <div class="trust-perk-icon"><i class="fa-solid fa-truck-fast"></i></div>
+            <div>
+              <h4 style="font-size: 13px; font-weight: 700; color: var(--dark-text);">ক্যাশ অন ডেলিভারি</h4>
+              <p style="font-size: 11.5px; color: var(--text-muted); margin-top: 1px;">হাতে পেয়ে মূল্য পরিশোধ</p>
+            </div>
+          </div>
+          <div class="trust-perk-card">
+            <div class="trust-perk-icon"><i class="fa-solid fa-box-open"></i></div>
+            <div>
+              <h4 style="font-size: 13px; font-weight: 700; color: var(--dark-text);">ফুড-গ্রেড প্যাক</h4>
+              <p style="font-size: 11.5px; color: var(--text-muted); margin-top: 1px;">তাজা ও স্বাস্থ্যসম্মত</p>
+            </div>
+          </div>
+          <div class="trust-perk-card">
+            <div class="trust-perk-icon"><i class="fa-solid fa-rotate-left"></i></div>
+            <div>
+              <h4 style="font-size: 13px; font-weight: 700; color: var(--dark-text);">সহজ রিটার্ন</h4>
+              <p style="font-size: 11.5px; color: var(--text-muted); margin-top: 1px;">নিরাপদ রিফান্ড গ্যারান্টি</p>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- Product Details Right -->
       <div>
-        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px; flex-wrap: wrap;">
           <span style="background: rgba(18, 59, 39, 0.08); color: var(--primary-deep-green); font-size: 13px; font-weight: 700; padding: 4px 12px; border-radius: var(--radius-full);">
             ${catObj ? catObj.name : 'প্রাকৃতিক খাদ্য'}
           </span>
-          <span style="color: #166534; font-size: 13px; font-weight: 700;">
-            <i class="fa-solid fa-circle-check"></i> স্টকে আছে (তাজা ব্যাচ)
+          <span style="display: inline-flex; align-items: center; gap: 6px; color: #166534; font-size: 13px; font-weight: 700;">
+            <span class="pulse-dot"></span> স্টকে আছে (তাজা ঘরোয়া ব্যাচ)
           </span>
         </div>
 
         <h1 class="serif-font" style="font-size: 32px; font-weight: 800; color: var(--primary-deep-green); line-height: 1.3;">${product.name}</h1>
         <p style="font-size: 14.5px; color: var(--muted-gold-dark); font-weight: 700; margin-top: 4px; letter-spacing: 0.5px;">${product.englishName}</p>
 
-        <!-- Rating Row -->
-        <div class="product-rating-row" style="margin: 14px 0 18px;">
+        <!-- Rating Row with Click to Scroll to Reviews -->
+        <div class="product-rating-box">
           <div class="star-rating" style="font-size: 16px;">
             <i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star"></i>
@@ -801,18 +831,36 @@ function renderProductDetailsPage() {
             <i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star"></i>
           </div>
-          <span style="font-size: 14px; font-weight: 800; color: var(--dark-text);">${product.rating}</span>
-          <span style="font-size: 13.5px; color: var(--text-muted);">(${toBanglaNumber(product.reviewsCount)} ভেরিফাইড রিভিউ)</span>
+          <span style="font-size: 14.5px; font-weight: 800; color: var(--dark-text);">${product.rating}</span>
+          <button class="rating-badge-pill" onclick="window.scrollToReviewsTab()">
+            <i class="fa-regular fa-comment-dots"></i>
+            <span>${toBanglaNumber(product.reviewsCount)} ভেরিফাইড রিভিউ</span>
+          </button>
         </div>
 
         <!-- Price Banner -->
-        <div style="background: var(--warm-cream); border: 1.5px solid var(--border-light); border-radius: 16px; padding: 18px 24px; margin-bottom: 22px;">
+        <div class="product-price-banner">
           <div style="display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;">
             <span style="font-size: 34px; font-weight: 800; color: var(--primary-deep-green); font-family: var(--font-sans);" id="product-detail-price">${formatTaka(product.price)}</span>
             ${product.originalPrice ? `<span style="font-size: 18px; color: var(--text-muted); text-decoration: line-through;">${formatTaka(product.originalPrice)}</span>` : ''}
-            ${product.originalPrice ? `<span class="badge badge-discount">৳${toBanglaNumber(product.originalPrice - product.price)} ছাড়</span>` : ''}
+            ${product.originalPrice ? `<span class="badge badge-discount">৳${toBanglaNumber(product.originalPrice - product.price)} সাশ্রয় (২১% ছাড়)</span>` : ''}
           </div>
-          <p style="font-size: 13.5px; color: var(--text-muted); margin-top: 6px;">প্যাক সাইজ: <strong style="color: var(--dark-text);">${product.unit}</strong> | ক্যাশ অন ডেলিভারি প্রযোজ্য</p>
+          <p style="font-size: 13.5px; color: var(--text-muted); margin-top: 6px;">
+            প্যাক সাইজ: <strong style="color: var(--dark-text);" id="selected-size-text">${product.unit}</strong> | ক্যাশ অন ডেলিভারি প্রযোজ্য
+          </p>
+        </div>
+
+        <!-- Pack Size Variant Selector -->
+        <div style="margin-bottom: 22px;">
+          <span style="font-size: 13.5px; font-weight: 700; color: var(--dark-text); display: block; margin-bottom: 8px;">প্যাকেজ সাইজ পছন্দ করুন:</span>
+          <div style="display: flex; gap: 10px; flex-wrap: wrap;" id="product-size-pills">
+            <button class="size-pill active" onclick="window.selectProductSize('${product.unit}', ${product.price}, this)">
+              ${product.unit} — ${formatTaka(product.price)}
+            </button>
+            <button class="size-pill" onclick="window.selectProductSize('২x ডাবল প্যাক (স্পেশাল ছাড়)', ${Math.round(product.price * 1.9)}, this)">
+              ২x ডাবল প্যাক — ${formatTaka(Math.round(product.price * 1.9))} (১০% এক্সট্রা ছাড়)
+            </button>
+          </div>
         </div>
 
         <!-- Short Description -->
@@ -821,10 +869,10 @@ function renderProductDetailsPage() {
         </p>
 
         <!-- Key Features Checklist -->
-        <div style="display: flex; flex-direction: column; gap: 9px; margin-bottom: 24px; background: #ffffff; padding: 16px 20px; border-radius: 12px; border: 1px solid var(--border-light);">
+        <div style="display: flex; flex-direction: column; gap: 9px; margin-bottom: 24px; background: #ffffff; padding: 18px 20px; border-radius: 14px; border: 1.5px solid var(--border-light); box-shadow: 0 2px 8px rgba(0,0,0,0.02);">
           ${(product.features || []).map(f => `
             <div style="display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600; color: var(--dark-text);">
-              <i class="fa-solid fa-circle-check" style="color: var(--primary-deep-green);"></i>
+              <i class="fa-solid fa-circle-check" style="color: var(--primary-deep-green); font-size: 16px;"></i>
               <span>${f}</span>
             </div>
           `).join('')}
@@ -832,13 +880,16 @@ function renderProductDetailsPage() {
 
         <!-- Quantity Selector & Actions -->
         <div style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 24px;">
-          <div style="display: flex; align-items: center; gap: 16px;">
+          <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
             <span style="font-size: 14.5px; font-weight: 700; color: var(--dark-text);">পরিমাণ (Quantity):</span>
             <div class="qty-stepper" style="height: 44px;">
-              <button class="qty-btn" onclick="window.adjustProductPageQty(-1, ${product.price})"><i class="fa-solid fa-minus"></i></button>
+              <button class="qty-btn" onclick="window.adjustProductPageQty(-1)"><i class="fa-solid fa-minus"></i></button>
               <input type="number" id="product-detail-qty" class="qty-input" value="1" min="1" max="50" readonly />
-              <button class="qty-btn" onclick="window.adjustProductPageQty(1, ${product.price})"><i class="fa-solid fa-plus"></i></button>
+              <button class="qty-btn" onclick="window.adjustProductPageQty(1)"><i class="fa-solid fa-plus"></i></button>
             </div>
+            <span style="font-size: 14px; font-weight: 700; color: var(--primary-deep-green);" id="product-qty-subtotal">
+              (মোট: ${formatTaka(product.price)})
+            </span>
           </div>
 
           <div style="display: flex; gap: 12px; flex-wrap: wrap;">
@@ -852,8 +903,8 @@ function renderProductDetailsPage() {
             </button>
           </div>
 
-          <a href="${waUrl}" target="_blank" rel="noopener" class="btn btn-whatsapp-hero" style="width: 100%; justify-content: center; padding: 14px;">
-            <i class="fa-brands fa-whatsapp" style="font-size: 20px;"></i>
+          <a id="product-page-wa-btn" href="${waUrl}" target="_blank" rel="noopener" class="btn btn-whatsapp-hero" style="width: 100%; justify-content: center; padding: 14px; font-size: 15.5px; font-weight: 700;">
+            <i class="fa-brands fa-whatsapp" style="font-size: 22px;"></i>
             <span>WhatsApp-এ সরাসরি অর্ডার দিন</span>
           </a>
         </div>
@@ -922,8 +973,8 @@ function renderProductTabPane(product, tabName) {
         <h3 class="serif-font" style="font-size: 22px; color: var(--primary-deep-green); margin-bottom: 14px;">ব্যবহৃত প্রাকৃতিক উপকরণ</h3>
         <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px;">
           ${ingredients.map(ing => `
-            <span style="background: #f7f3ea; border: 1.5px solid var(--border-light); padding: 6px 14px; border-radius: var(--radius-full); font-size: 14px; font-weight: 600; color: var(--primary-deep-green);">
-              <i class="fa-solid fa-leaf" style="color: var(--muted-gold); margin-right: 4px;"></i> ${ing}
+            <span style="background: #f7f3ea; border: 1.5px solid var(--border-light); padding: 8px 16px; border-radius: var(--radius-full); font-size: 14px; font-weight: 600; color: var(--primary-deep-green);">
+              <i class="fa-solid fa-leaf" style="color: var(--muted-gold); margin-right: 6px;"></i> ${ing}
             </span>
           `).join('')}
         </div>
@@ -934,7 +985,7 @@ function renderProductTabPane(product, tabName) {
             ${nutrition.map(n => `
               <tr>
                 <td style="font-weight: 700; color: var(--dark-text);">${n.label}</td>
-                <td style="color: var(--primary-deep-green); font-weight: 600;">${n.value}</td>
+                <td style="color: var(--primary-deep-green); font-weight: 700;">${n.value}</td>
               </tr>
             `).join('')}
           </tbody>
@@ -949,15 +1000,15 @@ function renderProductTabPane(product, tabName) {
 
         <h3 class="serif-font" style="font-size: 22px; color: var(--primary-deep-green); margin-bottom: 12px;">সংরক্ষণ পদ্ধতি</h3>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;">
-          <div style="background: #faf7ef; border: 1px solid var(--border-light); border-radius: 12px; padding: 16px;">
-            <i class="fa-solid fa-sun" style="color: var(--muted-gold-dark); font-size: 24px; margin-bottom: 8px;"></i>
+          <div style="background: #faf7ef; border: 1.5px solid var(--border-light); border-radius: 14px; padding: 18px;">
+            <i class="fa-solid fa-sun" style="color: var(--muted-gold-dark); font-size: 26px; margin-bottom: 8px;"></i>
             <h4 style="font-size: 15px; font-weight: 700; color: var(--primary-deep-green);">শুষ্ক ও ছায়াযুক্ত স্থান</h4>
-            <p style="font-size: 13.5px; color: var(--dark-text); margin-top: 4px;">সরাসরি সূর্যালোক ও আর্দ্রতা থেকে দূরে রাখুন।</p>
+            <p style="font-size: 13.5px; color: var(--dark-text); margin-top: 4px;">সরাসরি সূর্যালোক ও অতিরিক্ত আর্দ্রতা থেকে দূরে স্বাভাবিক তাপমাত্রায় রাখুন।</p>
           </div>
-          <div style="background: #faf7ef; border: 1px solid var(--border-light); border-radius: 12px; padding: 16px;">
-            <i class="fa-solid fa-box" style="color: var(--muted-gold-dark); font-size: 24px; margin-bottom: 8px;"></i>
-            <h4 style="font-size: 15px; font-weight: 700; color: var(--primary-deep-green);">বায়ুরোধী জার</h4>
-            <p style="font-size: 13.5px; color: var(--dark-text); margin-top: 4px;">ব্যবহারের পর ভালো করে ঢাকনা বন্ধ রাখুন।</p>
+          <div style="background: #faf7ef; border: 1.5px solid var(--border-light); border-radius: 14px; padding: 18px;">
+            <i class="fa-solid fa-box" style="color: var(--muted-gold-dark); font-size: 26px; margin-bottom: 8px;"></i>
+            <h4 style="font-size: 15px; font-weight: 700; color: var(--primary-deep-green);">বায়ুরোধী কাঁচের জার</h4>
+            <p style="font-size: 13.5px; color: var(--dark-text); margin-top: 4px;">ব্যবহারের পর জারের ঢাকনা শক্ত করে বন্ধ রাখুন যাতে ফ্রেশনেস বজায় থাকে।</p>
           </div>
         </div>
       </div>
@@ -970,34 +1021,59 @@ function renderProductTabPane(product, tabName) {
 
     content.innerHTML = `
       <div style="max-width: 860px;">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
           <div>
             <h3 class="serif-font" style="font-size: 22px; color: var(--primary-deep-green);">ভেরিফাইড কাস্টমার রিভিউ</h3>
             <p style="font-size: 13.5px; color: var(--text-muted);">শতভাগ সন্তুষ্ট গ্রাহকের বাস্তব অভিজ্ঞতা</p>
           </div>
-          <button class="btn btn-outline btn-sm" onclick="window.showToast('রিভিউ লেখার অপশন খুব শীঘ্রই উন্মুক্ত হবে!')">
+          <button class="btn btn-outline btn-sm" onclick="document.getElementById('add-review-form-wrap')?.classList.toggle('hidden-form')">
             <i class="fa-solid fa-pen"></i> রিভিউ লিখুন
           </button>
         </div>
 
-        <div>
+        <!-- Add Review Form (Collapsible) -->
+        <div id="add-review-form-wrap" class="hidden-form" style="background: #faf7ef; border: 1.5px solid var(--border-light); border-radius: 16px; padding: 22px; margin-bottom: 24px;">
+          <h4 style="font-size: 16px; font-weight: 700; color: var(--primary-deep-green); margin-bottom: 12px;">আপনার মূল্যবান রিভিউ লিখুন</h4>
+          <form onsubmit="window.submitProductReview(event)">
+            <div class="form-group">
+              <label style="font-size: 13px; font-weight: 700;">আপনার নাম *</label>
+              <input type="text" id="review-user-name" class="form-input" placeholder="আপনার পুরো নাম" required />
+            </div>
+            <div class="form-group">
+              <label style="font-size: 13px; font-weight: 700;">রেটিং প্রদান করুন *</label>
+              <select id="review-user-rating" class="form-input" style="height: 42px;">
+                <option value="5">⭐⭐⭐⭐⭐ (৫/৫ - অসাধারণ)</option>
+                <option value="4">⭐⭐⭐⭐ (৪/৫ - খুব ভালো)</option>
+                <option value="3">⭐⭐⭐ (৩/৫ - সন্তোষজনক)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label style="font-size: 13px; font-weight: 700;">আপনার মতামত বা অভিজ্ঞতা *</label>
+              <textarea id="review-user-comment" class="form-input" rows="3" placeholder="খাবারের স্বাদ, প্যাকেজিং বা গুণমান কেমন লেগেছে লিখুন..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-sm">
+              <i class="fa-solid fa-paper-plane"></i> রিভিউ জমা দিন
+            </button>
+          </form>
+        </div>
+
+        <div id="reviews-list-container">
           ${reviews.map(r => `
             <div class="review-card-item">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                <div style="display: flex; align-items: center; gap: 8px;">
-                  <span style="font-weight: 700; color: var(--primary-deep-green); font-size: 15px;">${r.author}</span>
-                  <span style="background: #e2f7ea; color: #166534; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: var(--radius-full);">
-                    <i class="fa-solid fa-circle-check"></i> ভেরিফাইড ক্রেতা
-                  </span>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <div class="review-author-avatar">${r.author.charAt(0)}</div>
+                  <div>
+                    <span style="font-weight: 700; color: var(--primary-deep-green); font-size: 15px; display: block;">${r.author}</span>
+                    <span style="background: #e2f7ea; color: #166534; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: var(--radius-full); display: inline-flex; align-items: center; gap: 4px;">
+                      <i class="fa-solid fa-circle-check"></i> ভেরিফাইড ক্রেতা
+                    </span>
+                  </div>
                 </div>
                 <span style="font-size: 12.5px; color: var(--text-muted);">${r.date}</span>
               </div>
               <div class="star-rating" style="font-size: 13px; margin-bottom: 8px;">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
+                ${Array(r.rating || 5).fill('<i class="fa-solid fa-star"></i>').join('')}
               </div>
               <p style="font-size: 14.5px; color: var(--dark-text); line-height: 1.6;">${r.comment}</p>
             </div>
@@ -1007,6 +1083,40 @@ function renderProductTabPane(product, tabName) {
     `;
   }
 }
+
+window.selectProductSize = function(sizeLabel, price, btnElement) {
+  selectedProductPageSizeLabel = sizeLabel;
+  selectedProductPagePrice = price;
+
+  const pills = document.querySelectorAll('#product-size-pills .size-pill');
+  pills.forEach(p => p.classList.remove('active'));
+  if (btnElement) btnElement.classList.add('active');
+
+  const priceDisplay = document.getElementById('product-detail-price');
+  const sizeText = document.getElementById('selected-size-text');
+  const subtotalDisplay = document.getElementById('product-qty-subtotal');
+  
+  if (priceDisplay) priceDisplay.textContent = formatTaka(price);
+  if (sizeText) sizeText.textContent = sizeLabel;
+  if (subtotalDisplay) subtotalDisplay.textContent = `(মোট: ${formatTaka(price * currentProductPageQty)})`;
+
+  // Update WhatsApp link
+  if (currentProductDetailsItem) {
+    const waText = encodeURIComponent(`হ্যালো URMIRA, আমি "${currentProductDetailsItem.name}" (${sizeLabel}, মূল্য: ৳${price}) অর্ডার করতে চাই।`);
+    const waBtn = document.getElementById('product-page-wa-btn');
+    if (waBtn) waBtn.href = `https://wa.me/${siteConfig.whatsappNumber}?text=${waText}`;
+  }
+};
+
+window.scrollToReviewsTab = function() {
+  const tabs = document.querySelectorAll('#product-info-tabs .product-tab-btn');
+  tabs.forEach(t => t.classList.remove('active'));
+  tabs[3]?.classList.add('active');
+  if (currentProductDetailsItem) {
+    renderProductTabPane(currentProductDetailsItem, 'reviews');
+  }
+  document.getElementById('product-info-tabs')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+};
 
 window.switchProductTab = function(tabName, btnElement) {
   const tabs = document.querySelectorAll('#product-info-tabs .product-tab-btn');
@@ -1018,9 +1128,9 @@ window.switchProductTab = function(tabName, btnElement) {
   }
 };
 
-window.adjustProductPageQty = function(delta, unitPrice) {
+window.adjustProductPageQty = function(delta) {
   const qtyInput = document.getElementById('product-detail-qty');
-  const priceDisplay = document.getElementById('product-detail-price');
+  const subtotalDisplay = document.getElementById('product-qty-subtotal');
   if (!qtyInput) return;
 
   let newQty = currentProductPageQty + delta;
@@ -1030,8 +1140,8 @@ window.adjustProductPageQty = function(delta, unitPrice) {
   currentProductPageQty = newQty;
   qtyInput.value = newQty;
 
-  if (priceDisplay) {
-    priceDisplay.textContent = formatTaka(unitPrice * newQty);
+  if (subtotalDisplay) {
+    subtotalDisplay.textContent = `(মোট: ${formatTaka(selectedProductPagePrice * newQty)})`;
   }
 };
 
@@ -1046,8 +1156,8 @@ window.addProductPageToCart = function(productId) {
     cart.push({
       id: product.id,
       name: product.name,
-      price: product.price,
-      unit: product.unit,
+      price: selectedProductPagePrice,
+      unit: selectedProductPageSizeLabel,
       image: product.image,
       quantity: currentProductPageQty
     });
@@ -1066,4 +1176,27 @@ window.buyProductPageNow = function(productId) {
   window.addProductPageToCart(productId);
   window.openCheckout();
 };
+
+window.submitProductReview = function(e) {
+  e.preventDefault();
+  const nameInput = document.getElementById('review-user-name');
+  const ratingInput = document.getElementById('review-user-rating');
+  const commentInput = document.getElementById('review-user-comment');
+
+  const newReview = {
+    author: nameInput.value.trim(),
+    rating: parseInt(ratingInput.value, 10) || 5,
+    date: "আজকে",
+    comment: commentInput.value.trim()
+  };
+
+  if (currentProductDetailsItem) {
+    if (!currentProductDetailsItem.reviews) currentProductDetailsItem.reviews = [];
+    currentProductDetailsItem.reviews.unshift(newReview);
+  }
+
+  showToast('আপনার রিভিউ সফলভাবে যুক্ত হয়েছে! ধন্যবাদ।', 'success');
+  renderProductTabPane(currentProductDetailsItem, 'reviews');
+};
+
 
