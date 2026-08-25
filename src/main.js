@@ -569,20 +569,97 @@ function setupEventListeners() {
     document.getElementById('global-overlay')?.classList.remove('active');
   });
 
-  // Search input
+  // 3. Workable Search input with Instant Dropdown
   const searchInput = document.getElementById('header-search-input');
-  searchInput?.addEventListener('input', (e) => {
-    const query = e.target.value.toLowerCase().trim();
+  const searchDropdown = document.getElementById('search-dropdown-menu');
+  const searchResultsList = document.getElementById('search-results-list');
+  const searchClearBtn = document.getElementById('search-clear-btn');
+
+  function performSearch(query) {
     if (!query) {
+      if (searchClearBtn) searchClearBtn.style.display = 'none';
+      if (searchResultsList) searchResultsList.innerHTML = '';
       renderProducts(products);
       return;
     }
+
+    if (searchClearBtn) searchClearBtn.style.display = 'flex';
+
     const filtered = products.filter(p => 
       p.name.toLowerCase().includes(query) || 
       p.englishName.toLowerCase().includes(query) ||
       p.description.toLowerCase().includes(query)
     );
+
+    // Render live dropdown list
+    if (searchResultsList) {
+      if (filtered.length === 0) {
+        searchResultsList.innerHTML = `
+          <div style="padding: 12px; text-align: center; color: var(--text-muted); font-size: 13px;">
+            <i class="fa-solid fa-circle-info" style="margin-bottom: 4px; color: var(--muted-gold);"></i>
+            <p>No products found for "${query}"</p>
+          </div>
+        `;
+      } else {
+        searchResultsList.innerHTML = filtered.map(p => `
+          <div class="search-result-item" onclick="window.openQuickView(${p.id}); document.getElementById('search-dropdown-menu')?.classList.remove('active');">
+            <img src="${p.image}" alt="${p.name}" class="search-result-img" />
+            <div class="search-result-info">
+              <h4 class="search-result-title">${p.name}</h4>
+              <span class="search-result-price">${formatTaka(p.price)}</span>
+            </div>
+            <button class="btn btn-sm btn-outline" style="padding: 4px 10px; font-size: 12px;" onclick="event.stopPropagation(); window.addToCart(${p.id});">
+              Add
+            </button>
+          </div>
+        `).join('');
+      }
+    }
+
+    // Also filter main product grid
     renderProducts(filtered);
+  }
+
+  searchInput?.addEventListener('input', (e) => {
+    const query = e.target.value.toLowerCase().trim();
+    searchDropdown?.classList.add('active');
+    performSearch(query);
+  });
+
+  searchInput?.addEventListener('focus', () => {
+    searchDropdown?.classList.add('active');
+    const query = searchInput.value.toLowerCase().trim();
+    performSearch(query);
+  });
+
+  searchClearBtn?.addEventListener('click', () => {
+    if (searchInput) searchInput.value = '';
+    performSearch('');
+    searchDropdown?.classList.remove('active');
+  });
+
+  // Global search tag trigger
+  window.triggerSearchTag = function(tag) {
+    if (searchInput) {
+      searchInput.value = tag;
+      searchDropdown?.classList.add('active');
+      performSearch(tag.toLowerCase().trim());
+      searchInput.focus();
+    }
+  };
+
+  // Close search dropdown on click outside
+  document.addEventListener('click', (e) => {
+    if (!document.getElementById('header-search-box')?.contains(e.target)) {
+      searchDropdown?.classList.remove('active');
+    }
+  });
+
+  // Escape key closes search dropdown
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      searchDropdown?.classList.remove('active');
+    }
   });
 
   // Checkout form
