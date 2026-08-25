@@ -12,6 +12,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         shop: resolve(__dirname, 'shop.html'),
+        product: resolve(__dirname, 'product.html'),
         categories: resolve(__dirname, 'categories.html'),
         ghee: resolve(__dirname, 'ghee.html'),
         about: resolve(__dirname, 'about.html'),
