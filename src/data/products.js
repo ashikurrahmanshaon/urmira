@@ -1,5 +1,5 @@
 // URMIRA (উর্মিরা) - Product & Brand Data
-// 100% Authentic Bangladeshi Homemade & Natural Food Data with Verified Product Assets
+// 100% Authentic Bangladeshi Homemade & Natural Food Data with Photorealistic Assets
 
 export const siteConfig = {
   name: "URMIRA",
@@ -20,7 +20,7 @@ export const categories = [
     name: "খেজুর ও খেজুরজাত পণ্য",
     englishName: "Dates & Date Products",
     count: "১২+ পণ্য",
-    image: "/assets/dates.svg",
+    image: "https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=800&q=85",
     slug: "dates-products",
     badge: "জনপ্রিয়"
   },
@@ -29,7 +29,7 @@ export const categories = [
     name: "বাদাম ও ড্রাই ফ্রুটস",
     englishName: "Almonds & Dry Fruits",
     count: "১৮+ পণ্য",
-    image: "/assets/nuts.svg",
+    image: "https://images.unsplash.com/photo-1508061253366-f7da158b6d46?auto=format&fit=crop&w=800&q=85",
     slug: "nuts-dry-fruits",
     badge: "প্রিমিয়াম"
   },
@@ -38,7 +38,7 @@ export const categories = [
     name: "বিশুদ্ধ ঘি",
     englishName: "Pure Desi Ghee",
     count: "৬+ পণ্য",
-    image: "/assets/ghee.svg",
+    image: "https://images.unsplash.com/photo-1628088062854-d1870b4553da?auto=format&fit=crop&w=800&q=85",
     slug: "pure-desi-ghee",
     badge: "১০০% খাঁটি"
   },
@@ -47,7 +47,7 @@ export const categories = [
     name: "হোমমেড স্পেশাল",
     englishName: "Date & Almond Energy Balls",
     count: "১৫+ পণ্য",
-    image: "/assets/energy_balls.svg",
+    image: "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=800&q=85",
     slug: "homemade-specials",
     badge: "ঘরোয়া"
   },
@@ -56,7 +56,7 @@ export const categories = [
     name: "এনার্জি ফুডস",
     englishName: "Homemade Snacks & Bars",
     count: "১০+ পণ্য",
-    image: "/assets/energy_bar.svg",
+    image: "https://images.unsplash.com/photo-1622484216807-6b21588dc228?auto=format&fit=crop&w=800&q=85",
     slug: "energy-foods",
     badge: "চিনিমুক্ত"
   },
@@ -65,7 +65,7 @@ export const categories = [
     name: "গিফট প্যাক",
     englishName: "Gift Packs",
     count: "৮+ পণ্য",
-    image: "/assets/gift_box.svg",
+    image: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=800&q=85",
     slug: "gift-packs",
     badge: "স্পেশাল"
   },
@@ -85,7 +85,7 @@ export const products = [
     price: 950,
     originalPrice: 1200,
     unit: "১ কেজি বক্স",
-    image: "/assets/dates.svg",
+    image: "https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=800&q=85",
     description: "মদিনার খাঁটি প্রিমিয়াম গ্রেড আজওয়া খেজুর। সম্পূর্ণ প্রাকৃতিক, মিষ্টি ও অত্যন্ত পুষ্টিকর। কোনো কৃত্রিম মিষ্টি বা রাসায়নিক দেওয়া হয়নি।",
     longDescription: "পবিত্র মদিনা মুনাওয়ারা থেকে সরাসরি সংগৃহীত প্রথম গ্রেডের সুস্বাদু আজওয়া খেজুর। এর গাঢ় কালচে রঙ, নরম গঠন এবং প্রাকৃতিক মিষ্টি স্বাদ স্বাস্থ্যের জন্য এক অমূল্য উপহার। URMIRA-র প্রতিটি খেজুর অত্যন্ত সতর্কতার সাথে গ্রেডিং ও বাছাই করে জীবাণুমুক্ত ফুড-গ্রেড ভ্যাকুয়াম বক্সে প্যাক করা হয় যাতে এর প্রাকৃতিক আর্দ্রতা ও পুষ্টিমান অক্ষুণ্ণ থাকে।",
     features: ["১০০% খাঁটি ও প্রাকৃতিক", "সরাসরি মদিনা থেকে আমদানিকৃত", "উচ্চ পুষ্টিগুণ ও রোগ প্রতিরোধক", "কোনো প্রকার কেমিক্যাল বা প্রিজারভেটিভ নেই"],
@@ -115,7 +115,7 @@ export const products = [
     price: 650,
     originalPrice: 780,
     unit: "১২ পিস বক্স",
-    image: "/assets/energy_balls.svg",
+    image: "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=800&q=85",
     description: "প্রাকৃতিক খেজুর, কাঠবাদাম, কাজু, পেস্তা ও খাঁটি বিলোনা ঘিয়ে ঘরে তৈরি সুস্বাদু এনার্জি বল। সম্পূর্ণ চিনিমুক্ত ও পুষ্টিকর।",
     longDescription: "রিফাইনড চিনির কোনো স্পর্শ ছাড়াই প্রাকৃতিক খেজুরের মিষ্টিতে ঘরে তৈরি সুপারফুড স্ন্যাক। এতে রয়েছে কুচানো কাঠবাদাম, কাজু, পেস্তা, চিয়া সিড এবং এক চামচ খাঁটি বিলোনা ঘির নিখুঁত মেলবন্ধন। প্রতিদিনের ক্লান্তিকর কাজের মাঝে তাত্ক্ষণিক এনার্জি ও পুষ্টির জোগান দিতে এই এনার্জি বল অনন্য।",
     features: ["০% রিফাইনড সুগার", "খাঁটি দেশি ঘিয়ে প্রস্তুত", "শিশু ও বড়দের জন্য আদর্শ হেলদি স্ন্যাক্স", "উচ্চমাত্রার স্বাস্থ্যকর ফ্যাট ও ফাইবার"],
@@ -145,7 +145,7 @@ export const products = [
     price: 1450,
     originalPrice: 1680,
     unit: "৫০০ মিলি কাঁচের জার",
-    image: "/assets/ghee.svg",
+    image: "https://images.unsplash.com/photo-1628088062854-d1870b4553da?auto=format&fit=crop&w=800&q=85",
     description: "ঘাস খাওয়া দেশি গরুর দুধ থেকে ঐতিহ্যবাহী বিলোনা (দই মন্থন) পদ্ধতিতে তৈরি ১০০% খাঁটি দানাদার সুগন্ধি ঘি।",
     longDescription: "প্রাচীন বৈদিক বিলোনা পদ্ধতিতে প্রস্তুত URMIRA-র খাঁটি দেশি গরুর ঘি। বাজারচলতি ক্রিম বা মাখন থেকে নয়, সরাসরি দুধ ফুটিয়ে মাটির পাত্রে দই বানিয়ে কাঠের বিলোনা দিয়ে মন্থন করে তৈরি করা হয় নবনীত। এরপর মৃদু আঁচে জ্বাল দিয়ে পাওয়া যায় দানাদার টেক্সচার ও মনভোলানো প্রাকৃতিক সুবাস।",
     features: ["ঐতিহ্যবাহী বিলোনা পদ্ধতিতে প্রস্তুত", "প্রাকৃতিক দানাদার ও মনোমুগ্ধকর সুবাস", "কোনো প্রিজারভেটিভ বা কৃত্রিম এসেন্স নেই", "সহজে হজমযোগ্য ও রোগপ্রতিরোধক"],
@@ -175,7 +175,7 @@ export const products = [
     price: 950,
     originalPrice: 1100,
     unit: "২৫০ গ্রাম প্যাক",
-    image: "/assets/nuts.svg",
+    image: "https://images.unsplash.com/photo-1508061253366-f7da158b6d46?auto=format&fit=crop&w=800&q=85",
     description: "কাজুবাদাম, কাঠবাদাম, পেস্তা, আখরোট ও রোস্টেড নাটসের পারফেক্ট ব্লেন্ড। প্রতিদিনের স্বাস্থ্যকর ফ্যাট ও প্রোটিনের সেরা উৎস।",
     longDescription: "বিশ্বসেরা বাগান থেকে বাছাইকৃত প্রিমিয়াম গ্রেডের কাজুবাদাম, ক্যালিফোর্নিয়ার কাঠবাদাম, ইরানি পেস্তা ও আখরোটের সমাহার। হালকা ড্রাই রোস্ট করার ফলে বাদামের আসল ক্রাঞ্চ ও সুস্বাদু প্রাকৃতিক ফ্লেভার বহুগুণে বৃদ্ধি পায়। মস্তিষ্ক ও হার্টের সুস্বাস্থ্যের জন্য প্রতিদিনের আদর্শ বাদাম মিক্স।",
     features: ["১ম গ্রেডের ফ্রেশ রোস্টেড বাদাম", "হালকা ক্রাঞ্চি ও পুষ্টিকর", "ভ্যাকুয়াম সিল আর্দ্রতারোধী প্যাকেজিং", "ওমেগা-৩ ও অ্যান্টিঅক্সিডেন্ট সমৃদ্ধ"],
@@ -205,7 +205,7 @@ export const products = [
     price: 650,
     originalPrice: 850,
     unit: "৬ পিস বক্স",
-    image: "/assets/energy_bar.svg",
+    image: "https://images.unsplash.com/photo-1622484216807-6b21588dc228?auto=format&fit=crop&w=800&q=85",
     description: "খাঁটি খেজুর, চিয়া সিড, ওটস এবং বাদামের সংমিশ্রণে তৈরি এনার্জি বার। অফিস, জিম বা ভ্রমণের পারফেক্ট পুষ্টিকর স্ন্যাক।",
     longDescription: "ঘরে তৈরি পুষ্টিকর এনার্জি বার যাতে কোনো কৃত্রিম মিষ্টি, কর্ন সিরাপ বা প্রিজারভেটিভ ব্যবহার করা হয়নি। খাঁটি খেজুরের বাইন্ডিং, রোলড ওটস, চিয়া সিড, সূর্যমুখীর বীজ ও বাদামের পারফেক্ট কম্বিনেশনে তৈরি। কর্মব্যস্ত দিনে ক্ষুধা নিবারণ ও তাৎক্ষণিক চাঙ্গা অনুভূতির জন্য এক আদর্শ বিকল্প।",
     features: ["১০০% রিফাইনড সুগার ফ্রি", "উচ্চ ফাইবার ও প্ল্যান্ট প্রোটিন সমৃদ্ধ", "তাত্ক্ষণিক শক্তি জোগায়", "সহজে বহনযোগ্য হাইজিনিক প্যাক"],
@@ -234,7 +234,7 @@ export const products = [
     price: 2200,
     originalPrice: 2500,
     unit: "১টি লাক্সারি গিফট বক্স",
-    image: "/assets/gift_box.svg",
+    image: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=800&q=85",
     description: "প্রিয়জনকে স্বাস্থ্যকর শুভেচ্ছা জানানোর জন্য ঐতিহ্যবাহী রাজকীয় কাঠের উপহার বক্স। এতে রয়েছে প্রিমিয়াম আজওয়া খেজুর, খাঁটি ঘি ও মিক্স নাটস।",
     longDescription: "উপহার হোক সুস্বাস্থ্যের এবং আন্তরিক ভালোবাসার। URMIRA-র স্পেশাল এডিশন গিফট বক্সে রয়েছে প্রিমিয়াম আজওয়া খেজুর (৫০০ গ্রাম), খাঁটি দেশি গরুর বিলোনা ঘি (২৫০ মিলি), এবং রোস্টেড মিক্সড নাটস (২০০ গ্রাম)। আকর্ষণীয় হ্যান্ডক্রাফটেড কাঠের বক্স এবং সোনালী ফিতা দিয়ে সাজানো এই গিফট বক্স পারিবারিক বা কর্পোরেট উপহারের সেরা পছন্দ।",
     features: ["লাক্সারি কাঠের ফিনিশিং বক্স", "৩টি প্রিমিয়াম পণ্যের এক্সক্লুসিভ কম্বো", "উপহার দেওয়ার জন্য আকর্ষণীয় ও মার্জিত প্রেজেন্টেশন", "ব্যক্তিগত শুভেচ্ছা কার্ড সংযোজনের সুবিধা"],
@@ -272,9 +272,9 @@ export const featuredProductSpotlight = {
     { label: "১ লিটার", price: 2800, originalPrice: 3200, key: "1000ml" }
   ],
   images: [
-    "/assets/ghee.svg",
-    "/assets/dates.svg",
-    "/assets/nuts.svg"
+    "https://images.unsplash.com/photo-1628088062854-d1870b4553da?auto=format&fit=crop&w=800&q=85",
+    "https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=800&q=85",
+    "https://images.unsplash.com/photo-1508061253366-f7da158b6d46?auto=format&fit=crop&w=800&q=85"
   ]
 };
 
@@ -342,5 +342,5 @@ export const brandStoryData = {
     "কোনো প্রকার কৃত্রিম রং, ফ্লেভার বা প্রিজারভেটিভ নয়",
     "পরিবারের প্রতি সর্বোচ্চ আন্তরিকতা ও জবাবদিহিতা"
   ],
-  image: "/assets/dates.svg"
+  image: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1000&q=85"
 };

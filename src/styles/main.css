@@ -262,7 +262,7 @@
 .categories-grid-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 26px;
+  gap: 24px;
 }
 
 /* ==========================================================================
@@ -270,8 +270,8 @@
    ========================================================================== */
 .best-sellers-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
 }
 
 /* ==========================================================================
@@ -545,11 +545,13 @@
   }
 
   .categories-grid-cards {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
   }
 
   .best-sellers-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
   }
 
   .why-grid {
@@ -611,16 +613,16 @@
 
   .categories-grid-cards {
     grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
+    gap: 12px;
   }
 
   .best-sellers-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
+    gap: 12px;
   }
 
   .product-card {
-    padding: 12px;
+    padding: 10px;
   }
 
   .product-title {
@@ -652,11 +654,12 @@
   }
 
   .categories-grid-cards {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
   }
 
   .best-sellers-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 10px;
   }
 
@@ -668,3 +671,4 @@
     display: none;
   }
 }
+
