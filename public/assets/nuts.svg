@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 500" width="100%" height="100%">
+  <defs>
+    <radialGradient id="bgLight" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#FFFDF7" />
+      <stop offset="60%" stop-color="#F5EFE0" />
+      <stop offset="100%" stop-color="#E5D9C0" />
+    </radialGradient>
+    <radialGradient id="almondSkin" cx="40%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#C4884D" />
+      <stop offset="60%" stop-color="#9C5E28" />
+      <stop offset="100%" stop-color="#5E320D" />
+    </radialGradient>
+    <radialGradient id="cashewNut" cx="35%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#FFF8E7" />
+      <stop offset="60%" stop-color="#EED5AE" />
+      <stop offset="100%" stop-color="#C9A670" />
+    </radialGradient>
+    <radialGradient id="pistachioNut" cx="40%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#C5E1A5" />
+      <stop offset="60%" stop-color="#8BC34A" />
+      <stop offset="100%" stop-color="#558B2F" />
+    </radialGradient>
+    <linearGradient id="ceramicBowl" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F5EEE2" />
+      <stop offset="50%" stop-color="#E2D4BF" />
+      <stop offset="100%" stop-color="#C7B298" />
+    </linearGradient>
+    <filter id="dropShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="10" />
+      <feOffset dx="0" dy="14" result="offsetblur" />
+      <feComponentTransfer><feFuncA type="linear" slope="0.4" /></feComponentTransfer>
+      <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="600" height="500" fill="url(#bgLight)" />
+  <ellipse cx="300" cy="420" rx="220" ry="45" fill="#1A0D05" opacity="0.35" />
+
+  <!-- Ceramic Bowl -->
+  <ellipse cx="300" cy="350" rx="210" ry="90" fill="url(#ceramicBowl)" filter="url(#dropShadow)" stroke="#C6A15B" stroke-width="2" />
+  <ellipse cx="300" cy="335" rx="195" ry="80" fill="#EADBC6" stroke="#D1BEA5" stroke-width="2" />
+
+  <!-- Almonds and Nuts Layer 1 -->
+  <ellipse cx="190" cy="330" rx="38" ry="24" transform="rotate(-30, 190, 330)" fill="url(#almondSkin)" />
+  <ellipse cx="250" cy="340" rx="40" ry="25" transform="rotate(15, 250, 340)" fill="url(#almondSkin)" />
+  <ellipse cx="320" cy="340" rx="42" ry="26" transform="rotate(-15, 320, 340)" fill="url(#almondSkin)" />
+  <ellipse cx="390" cy="330" rx="38" ry="24" transform="rotate(35, 390, 330)" fill="url(#almondSkin)" />
+
+  <!-- Cashews (Creamy Golden Kidney-shapes) -->
+  <path d="M210,290 Q240,270 260,295 Q240,320 215,310 Z" fill="url(#cashewNut)" stroke="#B38D56" stroke-width="1.5" />
+  <path d="M340,290 Q370,270 390,295 Q370,320 345,310 Z" fill="url(#cashewNut)" stroke="#B38D56" stroke-width="1.5" />
+
+  <!-- Pistachios -->
+  <ellipse cx="280" cy="300" rx="30" ry="20" transform="rotate(10, 280, 300)" fill="url(#pistachioNut)" />
+  <ellipse cx="330" cy="275" rx="28" ry="19" transform="rotate(-20, 330, 275)" fill="url(#pistachioNut)" />
+
+  <!-- Upper Almond Layer -->
+  <ellipse cx="230" cy="260" rx="40" ry="25" transform="rotate(-25, 230, 260)" fill="url(#almondSkin)" />
+  <ellipse cx="290" cy="250" rx="42" ry="26" transform="rotate(10, 290, 250)" fill="url(#almondSkin)" />
+  <ellipse cx="360" cy="255" rx="38" ry="24" transform="rotate(-15, 360, 255)" fill="url(#almondSkin)" />
+
+  <!-- Peak Cashew & Almond -->
+  <path d="M275,205 Q305,185 325,210 Q305,235 280,225 Z" fill="url(#cashewNut)" stroke="#B38D56" stroke-width="1.5" />
+  <ellipse cx="300" cy="180" rx="36" ry="22" transform="rotate(5, 300, 180)" fill="url(#almondSkin)" />
+
+  <!-- Loose Nuts on Table -->
+  <ellipse cx="130" cy="410" rx="32" ry="20" transform="rotate(20, 130, 410)" fill="url(#almondSkin)" />
+  <path d="M440,400 Q465,385 480,405 Q465,425 445,415 Z" fill="url(#cashewNut)" stroke="#B38D56" stroke-width="1.5" />
+  <ellipse cx="490" cy="425" rx="24" ry="16" fill="url(#pistachioNut)" />
+
+  <!-- Badge -->
+  <g transform="translate(420, 50)">
+    <circle cx="45" cy="45" r="42" fill="#123B27" stroke="#C6A15B" stroke-width="2.5" />
+    <text x="45" y="38" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="#C6A15B" text-anchor="middle" letter-spacing="1">PREMIUM</text>
+    <text x="45" y="56" font-family="'Noto Serif Bengali', serif" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">মিক্সড নাটস</text>
+  </g>
+</svg>

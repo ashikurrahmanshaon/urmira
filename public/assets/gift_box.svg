@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 500" width="100%" height="100%">
+  <defs>
+    <radialGradient id="bgLight" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#FFFDF7" />
+      <stop offset="60%" stop-color="#F5EFE0" />
+      <stop offset="100%" stop-color="#E5D9C0" />
+    </radialGradient>
+    <linearGradient id="boxWood" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1E4732" />
+      <stop offset="50%" stop-color="#123B27" />
+      <stop offset="100%" stop-color="#0B2619" />
+    </linearGradient>
+    <linearGradient id="goldRibbon" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFE082" />
+      <stop offset="40%" stop-color="#FFB300" />
+      <stop offset="70%" stop-color="#C6A15B" />
+      <stop offset="100%" stop-color="#A8833E" />
+    </linearGradient>
+    <filter id="dropShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="12" />
+      <feOffset dx="0" dy="16" result="offsetblur" />
+      <feComponentTransfer><feFuncA type="linear" slope="0.45" /></feComponentTransfer>
+      <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="600" height="500" fill="url(#bgLight)" />
+  <ellipse cx="300" cy="425" rx="230" ry="40" fill="#1A0D05" opacity="0.4" />
+
+  <!-- Royal Gift Box -->
+  <g transform="translate(130, 110)">
+    <!-- Box Body -->
+    <rect x="20" y="80" width="300" height="230" rx="18" fill="url(#boxWood)" stroke="#C6A15B" stroke-width="3" filter="url(#dropShadow)" />
+
+    <!-- Gold Inset Border -->
+    <rect x="30" y="90" width="280" height="210" rx="12" fill="none" stroke="#C6A15B" stroke-width="1.5" stroke-dasharray="6,3" />
+
+    <!-- Gold Satin Ribbon (Vertical) -->
+    <rect x="145" y="80" width="50" height="230" fill="url(#goldRibbon)" stroke="#8D6E63" stroke-width="1" />
+
+    <!-- Box Lid -->
+    <rect x="10" y="50" width="320" height="45" rx="10" fill="#1A4D33" stroke="#C6A15B" stroke-width="3" filter="url(#dropShadow)" />
+    <!-- Ribbon on Lid -->
+    <rect x="145" y="50" width="50" height="45" fill="url(#goldRibbon)" stroke="#8D6E63" stroke-width="1" />
+
+    <!-- Royal Emblem / Label -->
+    <rect x="80" y="160" width="180" height="70" rx="12" fill="#123B27" stroke="#FFE082" stroke-width="2" />
+    <text x="170" y="190" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="800" fill="#C6A15B" text-anchor="middle" letter-spacing="3">URMIRA</text>
+    <text x="170" y="212" font-family="'Noto Serif Bengali', serif" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">লাক্সারি গিফট হ্যাম্পার</text>
+
+    <!-- Ribbon Bow on Top -->
+    <!-- Left Loop -->
+    <ellipse cx="140" cy="45" rx="35" ry="20" transform="rotate(-30, 140, 45)" fill="url(#goldRibbon)" stroke="#8D6E63" stroke-width="1.5" />
+    <!-- Right Loop -->
+    <ellipse cx="200" cy="45" rx="35" ry="20" transform="rotate(30, 200, 45)" fill="url(#goldRibbon)" stroke="#8D6E63" stroke-width="1.5" />
+    <!-- Bow Knot -->
+    <circle cx="170" cy="48" r="14" fill="#FFB300" stroke="#8D6E63" stroke-width="1.5" />
+  </g>
+
+  <!-- Badge -->
+  <g transform="translate(420, 50)">
+    <circle cx="45" cy="45" r="42" fill="#123B27" stroke="#C6A15B" stroke-width="2.5" />
+    <text x="45" y="38" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="800" fill="#C6A15B" text-anchor="middle" letter-spacing="1">GIFT BOX</text>
+    <text x="45" y="56" font-family="'Noto Serif Bengali', serif" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">উপহার</text>
+  </g>
+</svg>

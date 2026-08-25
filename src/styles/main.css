@@ -1,0 +1,670 @@
+/* ==========================================================================
+   URMIRA Main Sections (Hero, Trust Bar, Categories, Best Sellers, Promo, Spotlight, Story, Why URMIRA, Reviews, Newsletter)
+   ========================================================================== */
+
+/* Common Section */
+.section {
+  padding: 60px 0;
+}
+
+.section-header-wrap {
+  text-align: center;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-tagline {
+  color: var(--muted-gold-dark);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.section-main-heading {
+  font-size: 34px;
+  font-weight: 800;
+  color: var(--dark-text);
+  line-height: 1.25;
+}
+
+.section-subtext {
+  font-size: 15.5px;
+  color: var(--text-muted);
+  max-width: 560px;
+}
+
+.section-header-flex {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 34px;
+}
+
+/* ==========================================================================
+   1. Hero Section (Large Photorealistic Media Showcase)
+   ========================================================================== */
+.hero-section {
+  background: radial-gradient(circle at 75% 45%, #f6f0e2 0%, #fbf8f0 100%);
+  padding: 64px 0 74px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  align-items: center;
+  gap: 52px;
+}
+
+.hero-content-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.hero-headline {
+  font-size: 50px;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--dark-text);
+}
+
+.hero-headline-accent {
+  color: var(--primary-deep-green);
+  display: block;
+}
+
+.hero-copy {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--text-muted);
+  max-width: 520px;
+}
+
+.hero-btn-group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.hero-trust-rating {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 10px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-light);
+  width: 100%;
+}
+
+.hero-avatar-stack {
+  display: flex;
+  align-items: center;
+}
+
+.hero-avatar-img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--white);
+  object-fit: cover;
+  margin-left: -8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.hero-avatar-img:first-child {
+  margin-left: 0;
+}
+
+.hero-rating-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hero-rating-caption {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--dark-text);
+}
+
+/* Hero Right Media Showcase - Larger Visual Area */
+.hero-media-right {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.hero-composition-card {
+  position: relative;
+  width: 100%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 20px 48px rgba(18, 59, 39, 0.18);
+  border: 1px solid var(--border-gold);
+  background: var(--white);
+}
+
+.hero-lifestyle-img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 11.5;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.hero-composition-card:hover .hero-lifestyle-img {
+  transform: scale(1.03);
+}
+
+.hero-float-badge {
+  position: absolute;
+  bottom: 22px;
+  left: 22px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid var(--muted-gold);
+  border-radius: var(--radius-md);
+  padding: 11px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.14);
+  backdrop-filter: blur(6px);
+}
+
+.hero-float-badge i {
+  font-size: 24px;
+  color: var(--primary-deep-green);
+}
+
+.hero-float-badge-text h4 {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--primary-deep-green);
+  line-height: 1.1;
+}
+
+.hero-float-badge-text p {
+  font-size: 12px;
+  color: var(--muted-gold-dark);
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   2. 5-Point Trust Bar
+   ========================================================================== */
+.trust-bar-section {
+  background: var(--white);
+  border-bottom: 1px solid var(--border-light);
+  padding: 26px 0;
+}
+
+.trust-bar-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  align-items: center;
+}
+
+.trust-bar-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 12px;
+  border-right: 1px solid var(--border-subtle);
+}
+
+.trust-bar-item:last-child {
+  border-right: none;
+}
+
+.trust-item-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(18, 59, 39, 0.06);
+  border: 1px solid var(--border-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-deep-green);
+  font-size: 17px;
+  flex-shrink: 0;
+}
+
+.trust-item-text h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--dark-text);
+  line-height: 1.2;
+}
+
+.trust-item-text p {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* ==========================================================================
+   3. Categories Grid (6 Premium Rectangular Cards)
+   ========================================================================== */
+.categories-grid-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+}
+
+/* ==========================================================================
+   4. Best Sellers Section (4-column grid desktop)
+   ========================================================================== */
+.best-sellers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* ==========================================================================
+   5. Featured Promotion Banner (Strong Dark Green Section)
+   ========================================================================== */
+.promo-section-wrap {
+  background: linear-gradient(135deg, #123b27 0%, #1a4d33 100%);
+  border-radius: var(--radius-lg);
+  padding: 48px 56px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: center;
+  gap: 44px;
+  color: var(--white);
+  border: 1px solid var(--border-gold);
+  box-shadow: 0 16px 40px rgba(18, 59, 39, 0.28);
+  position: relative;
+  overflow: hidden;
+}
+
+.promo-text-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.promo-label-badge {
+  background: var(--muted-gold);
+  color: var(--dark-text);
+  font-size: 12px;
+  font-weight: 800;
+  padding: 4px 14px;
+  border-radius: var(--radius-full);
+  letter-spacing: 1px;
+}
+
+.promo-headline {
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--white);
+}
+
+.promo-description {
+  font-size: 15.5px;
+  line-height: 1.65;
+  color: #d1fae5;
+  max-width: 460px;
+}
+
+.promo-media-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.promo-media-card {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 2px solid var(--muted-gold);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  max-width: 400px;
+  width: 100%;
+}
+
+.promo-media-card img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+}
+
+/* ==========================================================================
+   6. Brand Story Section (Split Layout)
+   ========================================================================== */
+.story-split-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  align-items: center;
+  gap: 52px;
+}
+
+.story-media-left {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border-gold);
+  box-shadow: var(--shadow-card);
+  aspect-ratio: 4 / 3.3;
+}
+
+.story-media-left img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.story-details-right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.story-heading {
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--dark-text);
+}
+
+.story-body-text {
+  font-size: 15.5px;
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+
+.story-principles-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin: 6px 0;
+}
+
+.principle-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--dark-text);
+}
+
+.principle-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(18, 59, 39, 0.1);
+  color: var(--primary-deep-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   7. Customer Reviews Placeholder Notice
+   ========================================================================== */
+.reviews-notice-card {
+  background: var(--white);
+  border: 1.5px dashed var(--border-gold);
+  border-radius: var(--radius-md);
+  padding: 34px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.reviews-notice-card i {
+  font-size: 32px;
+  color: var(--muted-gold);
+}
+
+.reviews-notice-card h3 {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--dark-text);
+}
+
+.reviews-notice-card p {
+  font-size: 14.5px;
+  color: var(--text-muted);
+  max-width: 500px;
+}
+
+/* ==========================================================================
+   8. Newsletter Subscription Banner
+   ========================================================================== */
+.newsletter-strip-wrap {
+  background-color: var(--primary-deep-green);
+  border-radius: var(--radius-lg);
+  padding: 34px 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  color: var(--white);
+  border: 1px solid var(--border-gold);
+  box-shadow: var(--shadow-card);
+}
+
+.newsletter-left-text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.newsletter-left-text h3 {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--white);
+}
+
+.newsletter-left-text p {
+  font-size: 14px;
+  color: #d1fae5;
+}
+
+.newsletter-form-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  max-width: 460px;
+}
+
+.newsletter-input-field {
+  flex: 1;
+  padding: 12px 18px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: var(--white);
+  font-size: 14px;
+  color: var(--dark-text);
+}
+
+.newsletter-input-field:focus {
+  outline: none;
+  border-color: var(--muted-gold);
+}
+
+.newsletter-submit-btn {
+  background-color: var(--muted-gold);
+  color: var(--dark-text);
+  font-weight: 700;
+  padding: 12px 22px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition-fast);
+}
+
+.newsletter-submit-btn:hover {
+  background-color: var(--muted-gold-dark);
+  color: var(--white);
+}
+
+/* ==========================================================================
+   Responsive Breakpoints for Sections
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 38px;
+  }
+
+  .hero-content-left {
+    align-items: center;
+  }
+
+  .hero-btn-group {
+    justify-content: center;
+  }
+
+  .hero-trust-rating {
+    justify-content: center;
+  }
+
+  .categories-grid-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .best-sellers-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .spotlight-card {
+    grid-template-columns: 1fr;
+    padding: 26px;
+  }
+
+  .promo-section-wrap {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 34px 26px;
+  }
+
+  .promo-text-content {
+    align-items: center;
+  }
+
+  .story-split-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .newsletter-strip-wrap {
+    flex-direction: column;
+    text-align: center;
+    padding: 28px 20px;
+  }
+
+  .newsletter-form-box {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-headline {
+    font-size: 34px;
+  }
+
+  .trust-bar-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .trust-bar-item {
+    border-right: none;
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 8px;
+  }
+
+  .trust-bar-item:last-child {
+    border-bottom: none;
+    grid-column: span 2;
+    justify-content: center;
+  }
+
+  .categories-grid-cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .best-sellers-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .product-card {
+    padding: 12px;
+  }
+
+  .product-title {
+    font-size: 13.5px;
+    min-height: 38px;
+  }
+
+  .current-price {
+    font-size: 16px;
+  }
+
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-headline {
+    font-size: 28px;
+  }
+
+  .trust-bar-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .trust-bar-item:last-child {
+    grid-column: auto;
+    justify-content: flex-start;
+  }
+
+  .categories-grid-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .best-sellers-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .product-card-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .btn-card-whatsapp {
+    display: none;
+  }
+}

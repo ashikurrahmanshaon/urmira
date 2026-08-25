@@ -1,0 +1,55 @@
+:root {
+  /* ==========================================================================
+     Strict URMIRA Brand Color Palette
+     ========================================================================== */
+  --primary-deep-green: #123B27;
+  --soft-leaf-green: #3E7A4A;
+  --warm-cream: #FBF8F0;
+  --warm-cream-card: #FFFFFF;
+  --warm-cream-hover: #F6F1E3;
+  --muted-gold: #C6A15B;
+  --muted-gold-dark: #A8833E;
+  --muted-gold-light: #EBD8B2;
+  --dark-text: #173021;
+  --text-muted: #4B6354;
+  --text-light: #7A9183;
+  --white: #FFFFFF;
+  
+  /* Borders & Surfaces */
+  --border-light: #E8E1D2;
+  --border-subtle: #F2ECE0;
+  --border-gold: rgba(198, 161, 91, 0.4);
+  --border-green: rgba(18, 59, 39, 0.12);
+
+  /* Status & Badges */
+  --badge-bestseller: #123B27;
+  --badge-new: #3E7A4A;
+  --badge-discount: #A8833E;
+
+  /* Typography */
+  --font-serif: 'Noto Serif Bengali', Georgia, serif;
+  --font-bengali: 'Hind Siliguri', 'Plus Jakarta Sans', -apple-system, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
+
+  /* Layout Widths (Spacious Premium Container) */
+  --container-max: 1320px;
+  --header-height: 84px;
+  --topbar-height: 40px;
+  --mobile-nav-height: 64px;
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+
+  /* Elevation Shadows */
+  --shadow-subtle: 0 4px 16px rgba(18, 59, 39, 0.05);
+  --shadow-card: 0 6px 24px rgba(18, 59, 39, 0.08);
+  --shadow-card-hover: 0 16px 36px rgba(18, 59, 39, 0.14);
+  --shadow-modal: 0 24px 60px rgba(18, 59, 39, 0.25);
+
+  /* Transitions */
+  --transition-fast: 0.18s ease;
+  --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
