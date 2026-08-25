@@ -80,6 +80,42 @@ function renderCategories() {
   });
 }
 
+function filterProductsByCategory(catId) {
+  if (!catId || catId === 'all') {
+    renderProducts(products);
+    return;
+  }
+  const filtered = products.filter(p => p.category === catId);
+  const container = document.getElementById('products-container');
+  if (container) {
+    renderProducts(filtered);
+    container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  } else {
+    window.location.href = `/shop.html?category=${catId}`;
+  }
+}
+
+window.filterProductsByCategory = filterProductsByCategory;
+
+window.filterShop = function(catId, btnElement) {
+  const tabs = document.querySelectorAll('#shop-filter-tabs .filter-tab');
+  tabs.forEach(t => {
+    t.classList.remove('btn-primary', 'active');
+    t.classList.add('btn-outline');
+  });
+  if (btnElement) {
+    btnElement.classList.remove('btn-outline');
+    btnElement.classList.add('btn-primary', 'active');
+  }
+
+  if (catId === 'all') {
+    renderProducts(products);
+  } else {
+    const filtered = products.filter(p => p.category === catId);
+    renderProducts(filtered);
+  }
+};
+
 // 2. Render Best Sellers Products Grid (all 6 catalog products)
 function renderProducts(productList = products) {
   const container = document.getElementById('products-container');
@@ -315,19 +351,6 @@ function renderWhyUrmira() {
       <p>${item.desc}</p>
     </div>
   `).join('');
-}
-
-// Category filter
-function filterProductsByCategory(catId) {
-  currentCategoryFilter = catId;
-  const filtered = products.filter(p => p.category === catId);
-  renderProducts(filtered);
-  showToast(`"${categories.find(c => c.id === catId)?.name}" ফিল্টার করা হয়েছে`);
-
-  const el = document.getElementById('best-sellers-section');
-  if (el) {
-    el.scrollIntoView({ behavior: 'smooth' });
-  }
 }
 
 // Wishlist

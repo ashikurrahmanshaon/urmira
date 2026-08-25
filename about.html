@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Story & Heritage - URMIRA | আমাদের গল্প</title>
+  <meta name="description" content="Learn about URMIRA's journey, our commitment to 100% natural homemade food, pure bilona ghee, and family wellness." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- CSS Styles -->
+  <link rel="stylesheet" href="/src/styles/reset.css" />
+  <link rel="stylesheet" href="/src/styles/variables.css" />
+  <link rel="stylesheet" href="/src/styles/components.css" />
+  <link rel="stylesheet" href="/src/styles/layout.css" />
+  <link rel="stylesheet" href="/src/styles/main.css" />
+</head>
+<body>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container"></div>
+  <div id="global-overlay" class="overlay"></div>
+
+  <!-- Sticky Main Navigation Header -->
+  <div class="header-wrapper">
+    <header class="main-nav-header">
+      <div class="container header-inner">
+        <!-- Mobile Toggle Hamburger -->
+        <button class="mobile-toggle-btn" id="mobile-nav-toggle" aria-label="Open Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <!-- Brand Identity Logo -->
+        <a href="/index.html" class="brand-logo-link">
+          <div class="brand-icon-seedling">
+            <i class="fa-solid fa-seedling"></i>
+          </div>
+          <div class="brand-text-wrap">
+            <span class="brand-title">URMIRA</span>
+            <span class="brand-subtitle">HOMEMADE & NATURAL FOODS</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Menu -->
+        <nav class="desktop-nav-menu" aria-label="Main Menu">
+          <a href="/index.html" class="nav-item-link">Home</a>
+          <a href="/shop.html" class="nav-item-link">Shop</a>
+          <a href="/categories.html" class="nav-item-link">Categories</a>
+          <a href="/ghee.html" class="nav-item-link">Pure Ghee</a>
+          <a href="/about.html" class="nav-item-link active">Our Story</a>
+          <a href="/contact.html" class="nav-item-link">Contact</a>
+        </nav>
+
+        <!-- Search Box with Live Results -->
+        <div class="header-search-box" id="header-search-box">
+          <input type="text" id="header-search-input" class="search-input-field" placeholder="Search natural foods..." aria-label="Search products" autocomplete="off" />
+          <button type="button" id="search-clear-btn" class="search-clear-btn" aria-label="Clear search" style="display: none;">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+          <span class="search-field-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+
+          <!-- Live Search Results Dropdown -->
+          <div class="search-dropdown-menu" id="search-dropdown-menu">
+            <div class="search-dropdown-header">
+              <span>Popular Searches</span>
+            </div>
+            <div class="search-popular-tags">
+              <span class="search-tag" onclick="window.triggerSearchTag('Ghee')">Pure Ghee</span>
+              <span class="search-tag" onclick="window.triggerSearchTag('Ajwa')">Ajwa Dates</span>
+              <span class="search-tag" onclick="window.triggerSearchTag('Nuts')">Mixed Nuts</span>
+              <span class="search-tag" onclick="window.triggerSearchTag('Energy')">Energy Balls</span>
+            </div>
+            <div id="search-results-list" class="search-results-list"></div>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="header-action-group">
+          <button class="header-action-btn" onclick="window.openCheckout()" title="My Account" aria-label="Account">
+            <i class="fa-regular fa-user"></i>
+          </button>
+          <button class="header-action-btn" onclick="window.toggleWishlist(1)" title="Wishlist" aria-label="Wishlist">
+            <i class="fa-regular fa-heart"></i>
+            <span class="badge-counter wishlist-counter">২</span>
+          </button>
+          <button class="header-action-btn cart-open-trigger" title="Shopping Cart" aria-label="Cart">
+            <i class="fa-solid fa-basket-shopping"></i>
+            <span class="badge-counter cart-counter">২</span>
+          </button>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <!-- Mobile Slide-out Menu Drawer -->
+  <div class="mobile-drawer-menu" id="mobile-drawer">
+    <div class="mobile-drawer-header">
+      <div class="brand-text-wrap">
+        <span class="brand-title" style="font-size: 20px;">URMIRA</span>
+        <span class="brand-subtitle">HOMEMADE & NATURAL FOODS</span>
+      </div>
+      <button class="btn-close-drawer" id="btn-close-mobile-drawer"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="mobile-drawer-links">
+      <a href="/index.html">Home</a>
+      <a href="/shop.html">Shop Catalog</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/ghee.html">Pure Ghee</a>
+      <a href="/about.html">Our Story</a>
+      <a href="/contact.html">Contact Us</a>
+      <a href="tel:+8801630072800" style="color: var(--primary-deep-green); font-weight: 700;">
+        <i class="fa-solid fa-phone"></i> +880 1630-072800
+      </a>
+    </div>
+  </div>
+
+  <main>
+    <!-- Subpage Hero Banner -->
+    <section class="page-hero-banner">
+      <div class="container">
+        <div class="breadcrumb-nav">
+          <a href="/index.html">Home</a>
+          <span>/</span>
+          <span>Our Story</span>
+        </div>
+        <h1 class="serif-font" style="margin-top: 14px;">আমাদের গল্প ও দর্শন</h1>
+        <p>বিশুদ্ধতা, আন্তরিকতা ও ভালোবাসার ঘরে তৈরি খাবারের নির্ভরযোগ্য নাম — URMIRA</p>
+      </div>
+    </section>
+
+    <!-- Story Main Section -->
+    <section class="section" id="story-section">
+      <div class="container story-split-grid">
+        <div class="story-media-left">
+          <img src="/assets/dates.svg" alt="URMIRA Homemade Natural Food Craft" />
+        </div>
+
+        <div class="story-details-right">
+          <span class="section-tagline">আমাদের ঐতিহ্য</span>
+          <h2 class="story-heading serif-font">
+            বিশুদ্ধতা ও ভালোবাসার<br />ঘরে তৈরি খাবার
+          </h2>
+          <p class="story-body-text">
+            URMIRA-র যাত্রা শুরু হয়েছিল পরিবারের প্রতিটি সদস্যের পাতে ভেজালমুক্ত, খাঁটি ও স্বাস্থ্যকর খাবার তুলে দেওয়ার তীব্র তাগিদ থেকে। বাজারে যখন কৃত্রিম উপাদান ও প্রিজারভেটিভের ছড়াছড়ি, তখন আমরা বেছে নিয়েছি প্রাচীন ঐতিহ্যবাহী রেসিপি ও খাঁটি উপকরণের পথ।
+          </p>
+          <p class="story-body-text" style="margin-top: -6px;">
+            আমরা বিশ্বাস করি—ভালোবাসা আর খাঁটি উপকরণ দিয়ে তৈরি খাবারই পারে পরিবারকে সুস্থ ও প্রাণবন্ত রাখতে। আমাদের প্রতিটি ব্যাচ ঘরোয়া পরিবেশে অত্যন্ত পরিচ্ছন্নতার সাথে প্রস্তুত করা হয়।
+          </p>
+
+          <div class="story-principles-grid">
+            <div class="principle-item">
+              <span class="principle-icon"><i class="fa-solid fa-check"></i></span>
+              <span>১০০% প্রাকৃতিক ও রাসায়নিকমুক্ত বিশুদ্ধ উপকরণ</span>
+            </div>
+            <div class="principle-item">
+              <span class="principle-icon"><i class="fa-solid fa-check"></i></span>
+              <span>প্রাচীন বিলোনা ও ঐতিহ্যবাহী স্বাস্থ্যসম্মত পদ্ধতি</span>
+            </div>
+            <div class="principle-item">
+              <span class="principle-icon"><i class="fa-solid fa-check"></i></span>
+              <span>কোনো প্রকার কৃত্রিম রং, ফ্লেভার বা প্রিজারভেটিভ নয়</span>
+            </div>
+            <div class="principle-item">
+              <span class="principle-icon"><i class="fa-solid fa-check"></i></span>
+              <span>পরিবারের প্রতি সর্বোচ্চ আন্তরিকতা ও নির্ভরযোগ্যতা</span>
+            </div>
+          </div>
+
+          <div style="margin-top: 16px;">
+            <a href="/shop.html" class="btn btn-primary">
+              <i class="fa-solid fa-bag-shopping"></i>
+              <span>আমাদের পণ্যসমূহ দেখুন</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Large Polished Footer -->
+  <footer class="site-footer" id="site-footer">
+    <div class="container">
+      <div class="footer-main-grid">
+        <!-- Column 1: Brand Info -->
+        <div class="footer-brand-column">
+          <a href="/index.html" class="brand-logo-link">
+            <div class="brand-icon-seedling">
+              <i class="fa-solid fa-seedling"></i>
+            </div>
+            <div class="brand-text-wrap">
+              <span class="brand-title">URMIRA</span>
+              <span class="brand-subtitle">HOMEMADE & NATURAL FOODS</span>
+            </div>
+          </a>
+          <p class="footer-brand-desc">
+            বাছাই করা উপকরণে যত্নসহকারে তৈরি ঘরোয়া স্বাদের খাবার। বিশুদ্ধতা ও ভালোবাসায় প্রস্তুত।
+          </p>
+          <div class="footer-social-group">
+            <a href="https://facebook.com" target="_blank" rel="noopener" class="footer-social-btn" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://instagram.com" target="_blank" rel="noopener" class="footer-social-btn" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://wa.me/8801630072800" target="_blank" rel="noopener" class="footer-social-btn" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <!-- Column 2: Shop Links -->
+        <div class="footer-column">
+          <h4>শপ ক্যাটাগরি</h4>
+          <ul class="footer-link-list">
+            <li><a href="/shop.html">খেজুর ও খেজুরজাত পণ্য</a></li>
+            <li><a href="/shop.html">বাদাম ও ড্রাই ফ্রুটস</a></li>
+            <li><a href="/ghee.html">খাঁটি বিলোনা ঘি</a></li>
+            <li><a href="/shop.html">হোমমেড এনার্জি ফুডস</a></li>
+            <li><a href="/shop.html">লাক্সারি গিফট প্যাক</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Customer Care -->
+        <div class="footer-column">
+          <h4>কাস্টমার কেয়ার</h4>
+          <ul class="footer-link-list">
+            <li><a href="#" onclick="window.openCheckout(); return false;">অর্ডার ট্র্যাক করুন</a></li>
+            <li><a href="#">শিপিং ও ডেলিভারি পলিসি</a></li>
+            <li><a href="#">রিটার্ন ও রিফান্ড নীতিমালা</a></li>
+            <li><a href="#">প্রায়শই জিজ্ঞাসিত প্রশ্ন (FAQ)</a></li>
+            <li><a href="#">প্রাইভেসি পলিসি</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Contact Us -->
+        <div class="footer-column">
+          <h4>যোগাযোগ</h4>
+          <div class="footer-contact-row">
+            <i class="fa-solid fa-phone"></i>
+            <span>+880 1630-072800</span>
+          </div>
+          <div class="footer-contact-row">
+            <i class="fa-regular fa-envelope"></i>
+            <span>info@urmira.com</span>
+          </div>
+          <div class="footer-contact-row">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Rajbari, Bangladesh</span>
+          </div>
+          <div class="footer-contact-row">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span>+880 1630-072800 (WhatsApp)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom-row">
+        <div>
+          © 2024 URMIRA. All Rights Reserved. Homemade & Natural Food Brand.
+        </div>
+        <div class="payment-gateway-strip">
+          <span class="gateway-badge" style="color: #d8236d;">bKash</span>
+          <span class="gateway-badge" style="color: #f7941d;">Nagad</span>
+          <span class="gateway-badge" style="color: #1a1f71;">VISA</span>
+          <span class="gateway-badge" style="color: #eb001b;">MasterCard</span>
+          <span class="gateway-badge" style="color: #166534;">ক্যাশ অন ডেলিভারি</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Sticky Mobile Bottom Navigation Bar -->
+  <nav class="mobile-bottom-navigation" aria-label="Mobile Navigation">
+    <a href="/index.html" class="mobile-nav-tab">
+      <i class="fa-solid fa-house"></i>
+      <span>Home</span>
+    </a>
+    <a href="/categories.html" class="mobile-nav-tab">
+      <i class="fa-solid fa-shapes"></i>
+      <span>Categories</span>
+    </a>
+    <a href="#" class="mobile-nav-tab cart-open-trigger" style="position: relative;">
+      <i class="fa-solid fa-basket-shopping"></i>
+      <span class="badge-counter cart-counter">২</span>
+      <span>Cart</span>
+    </a>
+    <a href="https://wa.me/8801630072800?text=Hello%20URMIRA%2C%20I%20want%20to%20order" 
+       target="_blank" rel="noopener" class="mobile-nav-tab whatsapp-tab">
+      <i class="fa-brands fa-whatsapp" style="font-size: 20px;"></i>
+      <span>WhatsApp</span>
+    </a>
+    <a href="#" class="mobile-nav-tab" onclick="window.openCheckout(); return false;">
+      <i class="fa-solid fa-circle-user"></i>
+      <span>Account</span>
+    </a>
+  </nav>
+
+  <!-- Floating WhatsApp Widget -->
+  <a href="https://wa.me/8801630072800?text=Hello%20URMIRA%2C%20I%20want%20to%20order" 
+     target="_blank" rel="noopener" class="floating-whatsapp" title="Order on WhatsApp" aria-label="WhatsApp Chat">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <!-- Cart Slide-out Drawer -->
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="cart-header">
+      <h3>
+        <i class="fa-solid fa-basket-shopping"></i>
+        <span>আপনার শপিং কার্ট</span>
+      </h3>
+      <button class="btn-close-drawer" id="btn-close-cart"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="cart-items-body" id="cart-drawer-items"></div>
+    <div class="cart-footer">
+      <div class="cart-total-row">
+        <span>মোট মূল্য (Subtotal):</span>
+        <span id="cart-subtotal-val">৳০</span>
+      </div>
+      <button class="btn btn-primary" style="width: 100%;" onclick="window.openCheckout()">
+        <i class="fa-solid fa-shield-check"></i>
+        <span>অর্ডার সম্পন্ন করুন</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Quick View Modal -->
+  <div class="modal" id="quick-view-modal">
+    <div class="modal-header">
+      <h3 class="serif-font">পণ্যের বিবরণ</h3>
+      <button class="btn-close-drawer" onclick="window.closeModals()"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div id="quick-view-content"></div>
+  </div>
+
+  <!-- Checkout Modal -->
+  <div class="modal" id="checkout-modal">
+    <div class="modal-header">
+      <h3 class="serif-font"><i class="fa-solid fa-bag-shopping" style="color: var(--primary-deep-green);"></i> দ্রুত অর্ডার সম্পন্ন করুন</h3>
+      <button class="btn-close-drawer" onclick="window.closeModals()"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <form id="checkout-form">
+      <div class="form-group">
+        <label for="order-name">আপনার নাম *</label>
+        <input type="text" id="order-name" class="form-input" placeholder="উদাঃ মোঃ আব্দুল্লাহ" required />
+      </div>
+      <div class="form-group">
+        <label for="order-phone">মোবাইল নম্বর *</label>
+        <input type="tel" id="order-phone" class="form-input" placeholder="০১XXXXXXXXX" required />
+      </div>
+      <div class="form-group">
+        <label for="order-address">সম্পূর্ণ ঠিকানা *</label>
+        <textarea id="order-address" class="form-input" rows="2" placeholder="বাড়ি/রোড নং, এলাকা, থানা, জেলা" required></textarea>
+      </div>
+
+      <div style="background: var(--warm-cream); border-radius: var(--radius-sm); padding: 14px; margin-bottom: 16px; border: 1px solid var(--border-light);">
+        <div style="display: flex; justify-content: space-between; font-size: 13.5px; margin-bottom: 5px;">
+          <span>পণ্যের মোট মূল্য:</span>
+          <span id="checkout-subtotal">৳০</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-size: 13.5px; margin-bottom: 5px;">
+          <span>ডেলিভারি চার্জ:</span>
+          <span id="checkout-shipping">৳৭০</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-size: 16px; font-weight: 800; color: var(--primary-deep-green); border-top: 1px solid var(--border-light); padding-top: 8px; margin-top: 6px;">
+          <span>সর্বমোট পরিশোধযোগ্য:</span>
+          <span id="checkout-total">৳০</span>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary" style="width: 100%;">
+        অর্ডার কনফার্ম করুন (ক্যাশ অন ডেলিভারি)
+      </button>
+    </form>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
